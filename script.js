@@ -80,8 +80,19 @@ function displayMovieDetails(details){
         <p class = "plot"><b>Plot:</b> ${details.Plot}</p>
         <p class = "language"><b>Language:</b> ${details.Language}</p>
         <p class = "awards"><b><i class = "fas fa-award"></i></b> ${details.Awards}</p>
+        <button onclick="addToFavorites('${details.imdbID}')">Добавить в избранное</button>
     </div>
     `;
+}
+
+function addToFavorites(movieId){
+    let favorites = [];
+    if(localStorage.getItem('favorites')){
+        favorites = JSON.parse(localStorage.getItem('favorites'));
+    }
+    favorites.push(movieId);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    alert('Movie added to favorites!');
 }
 
 
